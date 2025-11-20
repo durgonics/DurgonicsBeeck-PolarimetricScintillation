@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "Durgonics–Beeck Polarimetric GNSS Scintillation Formalism"
+authors:
+  - family-names: Durgonics
+    given-names: Tibor
+  - family-names: Beeck
+    given-names: Sarah Schultz
+doi: "10.5281/zenodo.xxxxxxx"
+url: "https://github.com/<yourname>/DB-Formalism-GNSS-Polarimetry"
