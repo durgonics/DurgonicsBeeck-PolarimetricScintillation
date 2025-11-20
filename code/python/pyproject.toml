@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "db-formalism"
+version = "0.1.0"
+description = "Durgonics–Beeck polarimetric GNSS scintillation formalism"
+authors = [
+  { name = "Tibor Durgonics" },
+  { name = "Sarah Schultz Beeck" }
+]
+dependencies = ["numpy", "scipy", "matplotlib"]
+
+[project.urls]
+Homepage = "https://github.com/USERNAME/DB-Formalism-GNSS-Polarimetry"
