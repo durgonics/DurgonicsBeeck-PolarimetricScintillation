@@ -1,0 +1,47 @@
+% DB_magnetometry_inversion.tikz
+\begin{tikzpicture}[>=Latex, font=\small]
+
+% Receiver and satellite
+\node[draw, rectangle, rounded corners, fill=gray!10] (rx) at (0,0) {GNSS Rx (dual-pol)};
+\node[draw, circle, fill=blue!10] (sat) at (6,3) {GNSS};
+
+\draw[->] (rx) -- node[above,sloped]{LOS} (sat);
+
+% Ionospheric layer
+\draw[fill=green!5] (1.0,0.5) rectangle (5.0,2.5);
+\node at (3,2.7) {F-region, $N_e(s), B_\parallel(s)$};
+
+% Arrows for Ne and B
+\draw[->, thick] (2.0,1.0) -- +(0,1.0) node[above] {$\mathbf{B}$};
+\draw[->, thick] (4.0,1.0) -- +(0,1.0);
+
+% Psi and TEC boxes
+\node[draw, rectangle, rounded corners, fill=orange!10, align=center] (psi) at (-2,2.0)
+    {$E_R,E_L$ \\ $\rightarrow$ Stokes \\ $\rightarrow \psi(f,t)$};
+
+\node[draw, rectangle, rounded corners, fill=orange!10, align=center] (tec) at (-2,0.0)
+    {Dual-freq GNSS \\ $\rightarrow \mathrm{TEC}(t)$};
+
+\draw[->] (rx) -- (psi);
+\draw[->] (rx) -- (tec);
+
+% Inversion block
+\node[draw, rectangle, rounded corners, fill=yellow!20, align=center] (inv) at (-5,1.0)
+    {Faraday inversion \\ $\psi(f,t)/\mathrm{TEC}(t)$ \\ $\rightarrow \langle B_\parallel\rangle_{N_e}(t)$};
+
+\draw[->] (psi) -- (inv);
+\draw[->] (tec) -- (inv);
+
+% Geomagnetic model
+\node[draw, rectangle, rounded corners, fill=cyan!10, align=center] (igrf) at (-8,1.0)
+    {IGRF + geometry \\ $\theta(t)$};
+
+\draw[->] (igrf) -- node[above] {$\cos\theta_{\rm eff}$} (inv);
+
+% Output B vector box
+\node[draw, rectangle, rounded corners, fill=red!10, align=center] (Bvec) at (-5,-1.8)
+    {$|\mathbf{B}|(t)$, $\delta B_\parallel(t)$};
+
+\draw[->] (inv) -- (Bvec);
+
+\end{tikzpicture}
